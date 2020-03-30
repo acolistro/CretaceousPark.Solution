@@ -10,8 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using CretaceousPark.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace CretaceousPark.Solution
+namespace CretaceousPark
 {
     public class Startup
     {
@@ -25,8 +27,7 @@ namespace CretaceousPark.Solution
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CretaceousParkContext>(opt =>
-                opt.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<CretaceousParkContext>(opt => opt.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
